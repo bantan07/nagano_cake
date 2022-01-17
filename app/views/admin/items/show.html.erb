@@ -1,0 +1,41 @@
+<p id="notice"></p>
+
+<div class="container px-5 px-sm-0">  
+ <div class="row">  
+  <div class="col-md-3">
+    <h4>商品詳細</h4>
+    <%= attachment_image_tag @item, :image, :fill, 100, 100, fallback: "image.png" %>
+  </div>
+  <div class="col-md-8 offset-md-1">
+    <div class=group>
+     <label for="name">商品名
+      <%= @item.name %>
+     </label>
+    </div>
+    <div class=group>
+     <label for="installation">商品説明
+      <%= @item.introduction %>
+     </label>
+    </div>
+    <div class=group>
+     <label for="genre">ジャンル
+      <%= @genres.name %>
+     </label>
+    </div>
+    <div class=group>
+     <label for="name">税込価格（税抜価格）
+      <%= @item.add_tax_price %> 円
+       <%= @item.price %>円
+     </label>
+    </div>
+    <div class=group>
+     <label for="is_active">商品名
+      <%= @item.is_active %>
+     </label>
+    </div>
+    <div class=group>
+    <%= link_to "編集する", edit_admin_item_path(@item.id) %>
+    </div>
+  </div>
+ </div>
+</div>

@@ -1,0 +1,45 @@
+<p id="notice"></p>
+
+<h4>商品編集</h4>
+<div class=container>
+ <div class=row>
+  <div class="px-3 mx-auto">
+    <%= form_with model:@item, url:"/admin/items/#{@item.id}", local:true,method: :patch do |f| %>
+    <div class=form-group>
+     <label for="Image_id">商品画像
+      <%= f.attachment_field :image %>
+     </label>
+    </div>
+    <div class="form-group">
+     <label for="name">商品名
+     <%= f.text_field :name %>
+     </label>
+   </div>
+   <div class="form-group">
+    <label for="name">商品説明
+    <%= f.text_area :introduction %>
+    </label>
+   </div>
+   <div class="form-group">
+    <label for="name">ジャンル
+    <%= f.collection_select :genre_id, @genres, :id, :name %>
+    </label>
+   </div>
+   <div class=form-group>
+     <label for="price">商品画像
+      <%= f.text_field :price %>
+     </label>
+   </div>
+   <div class=form-group>
+     <label for="sale">販売ステータス
+      <%= f.radio_button(:is_active, true) %>
+      <%= f.label :is_active, "販売中", style: "display: inline-block;" %>
+      <%= f.radio_button(:is_active, false) %>
+      <%= f.label :is_active, "販売停止中", style: "display: inline-block;" %>
+    </label>
+   </div>
+    <%=f.submit "変更を保存" %>
+    <% end %>
+  </div>
+ </div>
+</div>

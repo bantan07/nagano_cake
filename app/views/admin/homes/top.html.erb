@@ -1,0 +1,25 @@
+<p id="notice"></p>
+<h4>注文履歴一覧</h4>
+<div class="container">
+ <div class="row">
+  <div class="px-3 mx-auto">
+　 <table class="table">
+    <thead>
+     <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+     </tr>
+    </thead>
+    <tbody>
+　　<% @oders.each do |oder| %>
+　　 <tr>
+　　   <td><%= link_to order.created_at,admin_order_path %></td>
+　　   <td><%= customer.name %></td>
+　　   <td><%= order.amount %></td>
+      </tr>
+     <% end %>
+     </div>
+    </div>
+  </div>
+ </div>

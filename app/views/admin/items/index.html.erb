@@ -1,0 +1,37 @@
+<h4>商品一覧</h4>
+<%= link_to new_admin_item_path(@item), class:'fas fa-plus-circle fa-4x' do %>
+<% end %>
+<div class="container">
+ <div class="row">
+  <div class="px-3 mx-auto">
+　 <table class="table">
+    <thead>
+     <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+     </tr>
+    </thead>
+    <tbody>
+　　<% @items.each do |item| %>
+　　 <tr>
+　　   <td><%= item.id %></td>
+　　   <td><%= link_to item.name, admin_item_path(item.id) %></td>
+　　   <td><%= item.price %></td>
+　　   <td><%= @genre.name %></td>
+　　   <td><%= item.is_active %> </td>
+      </tr>
+     <% end %>
+   </table>
+     <div class="pagination">
+          <p>1</p>
+          <p>2</p>
+          <p>3</p>
+          <p>Next></p>
+          <p>Last>></p>
+     </div>
+    </div>
+  </div>
+ </div>

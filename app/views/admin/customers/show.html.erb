@@ -1,0 +1,57 @@
+<p id="notice"></p>
+
+<div class="container">  
+ <div class="row">  
+  <div class="px-3 mx-auto">
+   <h4>
+    <%= @containers.name %>
+    の会員詳細
+   </h4>
+    <div class=group>
+     <label for="id">会員
+      <%= @customer.id %>
+     </label>
+    </div>
+    <div class=group>
+     <label for="name">氏名
+      <%= @customer.last_name %>
+      <%= @customer.first_name %>
+     </label>
+    </div>
+    <div class=group>
+     <label for="name_kana">フリガナ
+      <%= @customer.last_name_kama %>
+      <%= @customer.first_name_kana %>
+     </label>
+    </div>
+    <div class=group>
+     <label for="postal_code">郵便番号
+      <%= @customer.postal_code %>
+     </label>
+    </div>
+    <div class=group>
+     <label for="address">住所
+      <%= @customer.address %>
+     </label>
+    </div>
+    <div class=group>
+     <label for="telephone_number">電話番号
+      <%= @customer.telephone_number %>
+     </label>
+    </div>
+    <div class=group>
+     <label for="email">メールアドレス
+      <%= @customer.email %>
+     </label>
+    </div>
+    <div class=group>
+     <label for="is_active">会員ステータス
+      <%= @customer.is_active %>
+     </label>
+    </div>
+    <%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
+    <%= link_to "注文履歴一覧を見る", admin_root_path(customer) %>
+    
+  </div>
+ </div>
+</div>
