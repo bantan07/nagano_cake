@@ -1,0 +1,18 @@
+<p id="notice"></p>
+
+<div class="container px-5 px-sm-0">  
+ <div class="row">  
+  <div class="col-md-3">
+    <%= form_with model:@item, url: item_path, local:true,method: :patch do |f| %>
+    <%= attachment_image_tag @item, :image, :fill, 300, 250, fallback: "image.png" %>
+  </div>
+  <div class="col-md-8 offset-md-1">
+    <%= @item.name %>
+    <%= @item.introduction %>
+    <%= @item.add_tax_price %>(税込)
+  　  <%= f.collection_select :@item, :id, :prompt => "個数選択" %>
+     <%=f.submit "カートに入れる", class:'btn btn-success' %>
+    </div>
+  </div>
+ </div>
+</div>

@@ -2,7 +2,7 @@
 <h4>注文履歴一覧</h4>
 <div class="container">
  <div class="row">
-  <div class="px-3 mx-auto">
+  <div class="px-5 mx-auto">
 　 <table class="table">
     <thead>
      <tr>
@@ -12,9 +12,9 @@
      </tr>
     </thead>
     <tbody>
-　　<% @oders.each do |oder| %>
+　　<% @orders.each do |order| %>
 　　 <tr>
-　　   <td><%= link_to order.created_at,admin_order_path %></td>
+　　   <td><%= link_to l order.created_at, admin_order_path %></td>
 　　   <td><%= customer.name %></td>
 　　   <td><%= order.amount %></td>
       </tr>

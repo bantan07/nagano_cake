@@ -1,0 +1,25 @@
+<p id="notice"></p>
+<div class="container">
+ <div class="row">
+  <div class="px-5 mx-auto">
+    <h4>商品一覧<p>(全x件)</p></h4>
+　 <table class="table">
+　　<% @items.each do |item| %>
+　　 <tr>
+　　   <td>
+　　     <%= attachment_image_tag @item, :image, :fill, 300, 250, fallback: "image.png" %>
+　　     商品名
+　　     ￥0,000
+　　  </td>
+     <% end %>
+   </table>
+     <div class="pagination">
+          <p>1</p>
+          <p>2</p>
+          <p>3</p>
+          <p>Next></p>
+          <p>Last>></p>
+     </div>
+    </div>
+  </div>
+ </div>

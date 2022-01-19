@@ -4,7 +4,7 @@
 <div class=container>
  <div class=row>
   <div class="px-3 mx-auto">
-    <%= form_with model:@item, url:"/admin/items/#{@item.id}", local:true,method: :patch do |f| %>
+    <%= form_with model:@item, url: edit_admin_item_path, local:true,method: :patch do |f| %>
     <div class=form-group>
      <label for="Image_id">商品画像
       <%= f.attachment_field :image %>
@@ -26,8 +26,8 @@
     </label>
    </div>
    <div class=form-group>
-     <label for="price">商品画像
-      <%= f.text_field :price %>
+     <label for="price">税抜価格
+      <%= f.text_field :price %>円
      </label>
    </div>
    <div class=form-group>
@@ -38,7 +38,7 @@
       <%= f.label :is_active, "販売停止中", style: "display: inline-block;" %>
     </label>
    </div>
-    <%=f.submit "変更を保存" %>
+    <%=f.submit "変更を保存", class:'btn btn-success' %>
     <% end %>
   </div>
  </div>
