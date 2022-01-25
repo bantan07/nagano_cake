@@ -3,45 +3,44 @@
 <div class=container>
  <div class=row>
   <div class="px-3 mx-auto">
-    <%= form_with model:@customer, url: new_customer_registration_path, local:true,method: :patch do |f| %>
+    <%= form_with model:@customer, url: customer_registration_path, local:true do |f| %>
     
     <div class="form-group">
-     <label for="name">名名
-     (性)<%=f.text_field :last_name %>
-     (名) <%=f.text_field :first_name %>
+     <label for="name">名前
+     (性)<%=f.text_field :last_name, :placeholder => "令和" %>
+     (名) <%=f.text_field :first_name, :placeholder => "道子" %>
      </label>
    </div>
    <div class="form-group">
     <label for="name_kana">フリガナ
-     (セイ)<%=f.text_field :last_name_kana %>
-     (メイ)<%=f.text_field :first_name_kana %>
+     (セイ)<%=f.text_field :last_name_kana, :placeholder => "レイワ" %>
+     (メイ)<%=f.text_field :first_name_kana, :placeholder => "ミチコ" %>
     </label>
     <div class=form-group>
      <label for="email">メールアドレス
-      <%= f.text_field :email %>
+      <%= f.text_field :email, :placeholder => "sample@example.com" %>
      </label>
    </div>
    </div>
    <div class="form-group">
      <label for="postal_code">郵便番号(ハイフンなし)
-      <%= f.text_field :postal_code %>
+      <%= f.text_field :postal_code, :placeholder => "0000000" %>
     </label>
    </div>
    <div class=form-group>
      <label for="address">住所
-      <%= f.text_field :address %>
+      <%= f.text_field :address, :size=>"60", :placeholder => "東京都渋谷区代々木神園町0-0" %>
      </label>
    </div>
    <div class=form-group>
      <label for="telephone_number">電話番号(ハイフンなし)
-      <%=  f.text_field :telephone_number %>
+      <%=  f.text_field :telephone_number, :placeholder => "00000000000" %>
      </label>
     </div>
   <div class=form-group>
      <label for="password">パスワード(6文字以上)
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password" %>
     </label>
   </div>
@@ -52,11 +51,11 @@
      </label>
  </div>
    
-    <%=f.submit "新規登録" %>
+    <%=f.submit "新規登録", class:'btn btn- btn-success' %>
    
     <h4>既に登録済みの方</h4>
-    <%= link_to "こちら", new_customer_session %>
-  　<h4>からログインしてください。</h4>
+    <%= link_to "こちら", new_customer_session_path %>
+  　からログインしてください。
   　<% end %>
   </div>
  </div>

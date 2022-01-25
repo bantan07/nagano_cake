@@ -4,7 +4,7 @@
  <div class="row">  
   <div class="px-3 mx-auto">
    <h4>
-    <%= @containers.name %>
+    <%= @customer.last_name + @customer.first_name %>
     の会員詳細
    </h4>
     <div class=group>
@@ -20,7 +20,7 @@
     </div>
     <div class=group>
      <label for="name_kana">フリガナ
-      <%= @customer.last_name_kama %>
+      <%= @customer.last_name_kana %>
       <%= @customer.first_name_kana %>
      </label>
     </div>
@@ -46,11 +46,15 @@
     </div>
     <div class=group>
      <label for="is_active">会員ステータス
-      <%= @customer.is_active %>
+      <%if @customer.is_active %>
+        有効
+      <% else %>
+        退会
+      <% end %>
      </label>
     </div>
     <%= link_to "編集する", edit_admin_customer_path(@customer.id), class:'btn btn-success' %>
-    <%= link_to "注文履歴一覧を見る", admin_root_path(customer), class="btn btn-primary" %>
+    <%= link_to "注文履歴一覧を見る", admin_root_path(@customer), class:'btn btn-primary' %>
     
   </div>
  </div>

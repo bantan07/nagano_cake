@@ -1,9 +1,24 @@
 Rails.application.routes.draw do
   devise_for :customers
-   devise_for :admins
-   
+  # devise_for :admin
+  # devise_scope :customer do
+  #   get "customers/sign_in" =>"devise/sessions#new"
+  #   post "customers/sign_in" =>"devise/sessions#create"
+  #   delete "customers/sign_out" =>"devise/sessions#destroy"
+  #   get "customers/sign_up" =>"devise/registrations#new"
+  #   post "customers/sign_up" =>"devise/registrations#create"
+  # end  
+  # devise_for :admins, skip: :all
+  # devise_scope :admin do
+  #   get "admin/sign_in" =>"admin/sessions#new"
+  #   post "admin/sign_in" =>"admin/sessions#create"
+  #   delete "admin/sign_out" =>"admin/sessions#destroy"
+  # end
+  devise_for :admins, path: 'admin', skip: [:registrations, :passwords], controllers: {
+    sessions: 'admin/sessions'
+  }
   namespace :admin do
-    resources :sessions, only:[:new, :create, :destroy]
+    root to: 'homes#top'
     resources :genres, only:[:index, :edit, :create, :update]
     resources :items, except:[:destroy]
     resources :customers, only:[:index, :edit, :show, :update]
@@ -11,24 +26,24 @@ Rails.application.routes.draw do
     resources :order_details, only:[:update]
   end
   
+  scope module: :public do
     root to: 'homes#top'
     get "home/about" =>"homes#about"
-    resources :registrations, only:[:new, :create]
-    resources :sessions, only:[:new, :create, :destroy]
     resources :items, only:[:index, :show]
-    resources :cart_items, only:[:index, :update, :destroy, :create]
+    resources :cart_items, only:[:index, :update, :delete, :create]
     delete "cart_items" =>"addresses#destroy_all"
-    resources :customers, only:[:edit, :show, :update]
+    get "customers/edit" =>"customers#edit"
+    get "customers" =>"customers#show"
     get "customers/confirm" =>"customer#confirm"
+    patch "customers" =>"customers#update"
     patch "customers/withdraw" =>"addresses#withdraw"
     resources :orders, only:[:new, :create, :index, :show]
     post "orders/confirm" =>"orders#confirm"
     get "orders/complete" =>"orders#complete"
-    get "addresses" =>"addresses#create"
-    get "addresses/edit" =>"addresses#edit"
+    resources :addresses, only:[:index, :edit, :update, :delete]
     post "addresses" =>"addresses#create"
-    patch "addresses" =>"addresses#update"
-    delete "addresses" =>"addresses#destroy"
     
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    
+  end
+# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

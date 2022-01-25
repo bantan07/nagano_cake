@@ -30,6 +30,6 @@ class Public::CartItemsController < ApplicationController
   private
    
   def item_params
-   params.require(:item).permit(:image, :name, :amount, :price, :is_active)
+   params.require(:item).permit(:image, :name, :introduction, :price, :is_active)
   end
 end

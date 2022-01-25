@@ -8,7 +8,8 @@ class Admin::ItemsController < ApplicationController
   def index
    @item = Item.new
    @items = Item.all
-   @genre = Genre.all
+   @genre = Genre.new
+  # @genres = @item.genre
   end
   
   def show
@@ -25,8 +26,8 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      flash[:notice] = "successfully"
-        redirect_to  admin_items_path(@item)
+       flash[:notice] = "successfully"
+       redirect_to  admin_items_path(@item)
     else
       @items = Item.all
       render :index

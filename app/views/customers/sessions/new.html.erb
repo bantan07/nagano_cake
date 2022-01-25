@@ -4,7 +4,7 @@
  <div class=row>
   <div class="px-3 mx-auto">
     <p>会員の方はこちらからログイン</p>
-    <%= form_with model:@customer, url: new_customer_session_path, local:true,method: :patch do |f| %>
+    <%= form_with model:@customer, url: session_path(@customer), local: true do |f| %>
     
     <div class=form-group>
      <label for="email">メールアドレス
@@ -17,11 +17,13 @@
     </label>
   </div>
     
-    <%= link_to "ログイン", items_path 
+    <%= f.submit "ログイン", class:'btn btn-primary' %>
     <h4>既に登録済みの方</h4>
-    <%= link_to "こちら", new_customer_registration %>
-  　<h4>から新規登録してください。</h4>
-  　<% end %>
+    <%= link_to "こちら", new_customer_registration_path %>
+    から新規登録してください。
+    <% end %>
   </div>
  </div>
 </div>
+
+

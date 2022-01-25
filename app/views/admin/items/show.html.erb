@@ -19,18 +19,24 @@
     </div>
     <div class=group>
      <label for="genre">ジャンル
-      <%= @genres.name %>
+      <%= @item.genre.name %>
      </label>
     </div>
     <div class=group>
      <label for="name">税込価格（税抜価格）
       <%= @item.add_tax_price %> 円
-       <%= @item.price %>円
+       (<%= @item.price %>)円
      </label>
     </div>
     <div class=group>
      <label for="is_active">販売ステータス
-      <%= @item.is_active %>
+      <td>
+　　    <% if @item.is_active %>
+　　         販売中
+　　    <% else %>
+　　        販売停止中
+　　    <% end %>
+　　  </td>
      </label>
     </div>
     <div class=group>

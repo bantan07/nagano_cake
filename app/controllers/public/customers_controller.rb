@@ -1,18 +1,18 @@
 class Public::CustomersController < ApplicationController
   
  def show
-  @customer = Customer.find(params[:id])
+  @customer = current_customer
  end
  
  def edit
-  @customer = Customer.find(params[:id])
+  @customer = current_customer
  end
  
  def update
-   @customer = Customer.find(params[:id])
+   @customer = current_customer
    if @customer.update(customer_params)
       flash[:notice] = "successfully" 
-      redirect_to customers_path(@customer.id)
+      redirect_to customers_path
    else
       flash[:notice] = "error" 
       render :edit
@@ -20,15 +20,15 @@ class Public::CustomersController < ApplicationController
  end
  
  def confirm
-  @customer = Customer.find(params[:id])
+  @customer = current_customer
  end
  
  def withdraw
-  @customer = Customer.find(params[:id])
+  @customer = current_customer
     @user.update(is_valid: false)
     reset_session
     redirect_to root_path
-  
+ end 
   
   private
    

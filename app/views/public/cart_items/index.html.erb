@@ -1,0 +1,35 @@
+<p id="notice"></p>
+<div class="container">
+ <div class="row">
+  <div class="px-5 mx-auto">
+    <h4>ショッピングカート</h4>
+    <<%= link_to "カートを空にする", cart_items_path,method: :delete class:'btn btn-danger' %>
+　 <table border="1">
+　   <thead>
+     <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+     </tr>
+    </thead>
+    <tbody>
+　　<% @items.each do |item| %>
+　　 <tr>
+　　   <td>
+　　    <%= attachment_image_tag @item, :image, :fill, 300, 250, fallback: "image.png" %>
+　　    <%= item.name %>
+　　   </td>
+　　   <td><%= item.price %></td>
+　　   <td>
+　　     <%=item.amount %>
+　　     <%= f.submit "編集", class:'btn btn-success' %>
+　　    </td>
+　　    
+　   </tr>
+     <% end %>
+   </table>
+    </div>
+  </div>
+ </div>

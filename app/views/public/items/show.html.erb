@@ -9,9 +9,11 @@
   <div class="col-md-8 offset-md-1">
     <%= @item.name %>
     <%= @item.introduction %>
-    <%= @item.add_tax_price %>(税込)
-  　  <%= f.collection_select :@item, :id, :prompt => "個数選択" %>
-     <%=f.submit "カートに入れる", class:'btn btn-success' %>
+    ¥<%= @item.add_tax_price %>(税込)
+  　 
+  　 
+     <%= link_to "カートに入れる",cart_items_path(@irem),method: :post, class:'btn btn-success' %>
+     <% end %>
     </div>
   </div>
  </div>

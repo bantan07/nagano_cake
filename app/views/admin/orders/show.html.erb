@@ -1,0 +1,33 @@
+<p id="notice"></p>
+<div class="container">  
+ <div class="row">  
+  <div class="px-12 mx-auto">
+   <h4>注文履歴詳細</h4>
+   <h4>登録情報</h4>
+   <table class="table">
+    <tr>
+     <th>購入者</th>
+      <td><%= @customer.last_name + @customer.first_name  %></td>
+    </tr>
+    <tr>
+     <th>注文日</th>
+      <td><%= @oder.created_at %></td>
+    </tr>
+    <tr>
+     <th>配送先</th>
+     <td><%= @customer.address %></td>
+   </tr>
+     <th>支払方法</th>
+     <td><%= @order.payment_method %></td>
+    <tr>
+     <th>注文ステータス</th>
+      <td><%= @order.status %></td>
+    </tr>  
+   </table>
+    <h4>配送先</h4>
+    <%= link_to "一覧を見る", addresses_path, class:'btn btn-primary' %>
+    <h4>注文履歴</h4>
+    <%= link_to "一覧を見る",  orders_path, class:'btn btn-primary' %>
+  </div>
+ </div>
+</div>

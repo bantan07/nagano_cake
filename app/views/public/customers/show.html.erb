@@ -1,11 +1,10 @@
 <p id="notice"></p>
-
 <div class="container">  
  <div class="row">  
   <div class="px-3 mx-auto">
    <h4>マイページ</h4>
    <h4>登録情報</h4>
-   <%= link_"編集する", edit_customer_path %>
+   <%= link_to "編集する", customers_edit_path %>
    <table border="1">
     <tr>
      <th>氏名</th>
@@ -17,7 +16,7 @@
     <tr>
      <th>フリガナ</th>
       <td>
-      <%= @customer.last_name_kama %>
+      <%= @customer.last_name_kana %>
       <%= @customer.first_name_kana %>
       </td>
     </tr>
@@ -29,7 +28,7 @@
      <td><%= @customer.address %></td>
     <tr>
      <th>電話番号</th>
-      <%= @customer.telephone_number %>
+      <td><%= @customer.telephone_number %></td>
     </tr>  
     <tr>
      <th>メールアドレス</th>
@@ -40,7 +39,6 @@
     <%= link_to "一覧を見る", addresses_path, class:'btn btn-primary' %>
     <h4>注文履歴</h4>
     <%= link_to "一覧を見る",  orders_path, class:'btn btn-primary' %>
-    <% end %>
   </div>
  </div>
 </div>

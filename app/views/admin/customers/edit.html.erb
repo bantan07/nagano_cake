@@ -1,6 +1,6 @@
 <p id="notice"></p>
 <h4>
-  <%= @customer.name %>
+  <%= @customer.last_name + @customer.first_name %>
   の会員情報編集
   </h4>
 <div class=container>
@@ -31,7 +31,7 @@
    </div>
    <div class=form-group>
      <label for="address">住所
-      <%= f.text_field :address %>
+      <%= f.text_field :address, :size=>"60" %>
      </label>
    </div>
    <div class=form-group>
@@ -52,7 +52,7 @@
       <%= f.label :is_active, "退会", style: "display: inline-block;" %>
     </label>
    </div>
-    <%=f.submit "変更を保存",  %>
+    <%=f.submit "変更を保存", class:'btn btn-success'  %>
     <% end %>
   </div>
  </div>
