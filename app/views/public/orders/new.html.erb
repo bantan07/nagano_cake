@@ -1,0 +1,19 @@
+<p id="notice"></p>
+<h4>注文情報入力</h4>
+<div class=container>
+ <div class=row>
+  <div class="px-10 mx-auto">
+    <%= form_with model: @order, url: new_order_path, local:true do |f| %>
+    <div class=form-group>
+     <label for="payment_method">支払方法
+      <%= f.radio_button :payment_method, "クレジットカード" %> クレジットカード
+      <%= f.radio_button :payment_method, "銀行振込" %> 銀行振込
+     </label>
+    </div>
+    
+    
+     <%=f.submit "新規登録",  %>
+     <% end %>
+   </div>
+ </div>
+</div>

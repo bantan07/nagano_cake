@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     get "home/about" =>"homes#about"
     resources :items, only:[:index, :show]
     resources :cart_items, only:[:index, :update, :delete, :create]
-    delete "cart_items" =>"addresses#destroy_all"
+    delete "cart_items" =>"cart_items#destroy_all"
     get "customers/edit" =>"customers#edit"
     get "customers" =>"customers#show"
     get "customers/confirm" =>"customer#confirm"
