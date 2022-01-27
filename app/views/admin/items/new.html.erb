@@ -21,7 +21,7 @@
     </div>
     <div class=form-group>
      <label for="name">ジャンル
-       <%= f.collection_select :genre_id, @genres, :id, :name, :prompt => "--選択してください--" %>
+       <%= f.collection_select :genre_id, @genres, :id, :name, "--選択してください--" => "--選択してください--" %>
      </label>
     </div>
     <div class=form-group>

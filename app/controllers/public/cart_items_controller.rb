@@ -4,8 +4,7 @@ class Public::CartItemsController < ApplicationController
    @cart_item = CartItem.new
    @cart_items = CartItem.all
    @item = Item.all
-   @order = Order.new
-  # @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
+#   @order = Order.new
   end
   
   def create

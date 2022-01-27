@@ -12,7 +12,7 @@
      <!--<p>hidden_fieldを使用してitem_idをコントローラに送信する</p>-->
      <%= f.hidden_field :item_id, :value => @item.id %>
      ¥<%= @item.add_tax_price %>(税込)
-     <%= f.number_field :amount, autocomplete: "個数選択" %>
+     <%= f.select :amount, "個数選択"  => "個数選択" %>
      <%= f.submit "カートに入れる", class:'btn btn-success' %>
 
     <% end %>
