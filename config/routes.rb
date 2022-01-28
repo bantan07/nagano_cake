@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     delete "cart_items" =>"cart_items#destroy_all"
     get "customers/edit" =>"customers#edit"
     get "customers" =>"customers#show"
-    get "customers/confirm" =>"customer#confirm"
+    get "customers/confirm" =>"customers#confirm"
     patch "customers" =>"customers#update"
     patch "customers/withdraw" =>"addresses#withdraw"
     resources :orders, only:[:new, :create, :index, :show]

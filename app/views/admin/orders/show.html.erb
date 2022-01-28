@@ -7,7 +7,7 @@
    <table class="table">
     <tr>
      <th>購入者</th>
-      <td><%= @customer.last_name + @customer.first_name  %></td>
+      <td><%= @order.customer.last_name + @order.customer.first_name  %></td>
     </tr>
     <tr>
      <th>注文日</th>
@@ -15,22 +15,60 @@
     </tr>
     <tr>
      <th>配送先</th>
-     <td><%= @customer.address %></td>
-   </tr>
-     <th>支払方法</th>
+     <td><%= @order.address %></td>
+  　 </tr>
+  　 <tr>
+  　  <th>支払方法</th>
      <td><%= @order.payment_method %></td>
-    <tr>
-     <th>注文ステータス</th>
-      <td>
-       <%= f.select @order.status, Order.statuses.keys, class: "status" %>
-       <%= f.submit "更新" , class:'btn btn- btn-success' %>
-      </td>
-    </tr>  
+  　 </tr>
+  　 <tr>
+       <th>注文ステータス</th>
+       <%= form_with model:@order, url:admin_order_path(order), local:true do |f| %>
+        <td><%= select :prefecture, options_for_select(Order.prefectures),  class: "prefecture-select" %></td>
+        <!--<td><%#= f.collection_select :payment_method, @.users.all, :id, :name %></td>-->
+        <!--<td><%#= f.select :amount, ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] %>-->
+        <%= f.submit "更新" , class:'btn btn- btn-success' %>
+       <% end %>
    </table>
-    <h4>配送先</h4>
-    <%= link_to "一覧を見る", addresses_path, class:'btn btn-primary' %>
-    <h4>注文履歴</h4>
-    <%= link_to "一覧を見る",  orders_path, class:'btn btn-primary' %>
+   <table class="table">
+    <thead>
+     <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>製造ステータス</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td><%= @Order.item.name %></td>
+      <td><%= @Order.item.price %></td>
+      <td><%= @Order.item. %></td>
+      <td>
+       <%= form_with model: @order, url:admin_order_path(order), local:true do |f| %>
+        <%= select :making_status, options_for_select(Order.prefectures),  class: "prefecture-select" %>
+        <!--<%#= f.select @order.making_status, Order.statuses.keys, class: "status" %>-->
+      <%= f.submit "更新" , class:'btn btn- btn-success' %>
+      <% end %>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <table class="table">
+    <tr>
+     <th>商品合計</th>
+     <td><%= @Order.price %></td>
+    </tr>
+    <tr>
+     <th>送料</th>
+     <td><%= @Order.shipping_cost %></td>
+    </tr>
+    <tr>
+     <th>請求金額合計</th>
+     <td><%= @Order.total_payment %></td>
+    </tr>
+   </table>
   </div>
  </div>
 </div>

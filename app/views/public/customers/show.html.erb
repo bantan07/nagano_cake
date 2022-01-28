@@ -3,8 +3,13 @@
  <div class="row">  
   <div class="px-3 mx-auto">
    <h4>マイページ</h4>
-   <h4>登録情報</h4>
-   <%= link_to "編集する", customers_edit_path %>
+   <table class="teble">
+    <tr>
+     <th><h4>登録情報</h4></th>
+     <td><%= link_to "編集する", customers_edit_path, class:'btn btn-success' %></td>
+    </tr>
+   </table>
+   <p></p>
    <table border="1">
     <tr>
      <th>氏名</th>
@@ -35,10 +40,18 @@
      <td><%= @customer.email %></td>
     </tr> 
    </table>
-    <h4>配送先</h4>
-    <%= link_to "一覧を見る", addresses_path, class:'btn btn-primary' %>
-    <h4>注文履歴</h4>
-    <%= link_to "一覧を見る",  orders_path, class:'btn btn-primary' %>
-  </div>
+   <p></p>
+   <table class="teble">
+    <tr>
+     <th><h4>配送先</h4></th>
+     <td><%= link_to "一覧を見る", addresses_path, class:'btn btn-primary' %></td>
+    </tr>
+    <th></th>
+    <tr>
+     <th><h4>注文履歴</h4></th>
+     <td><%= link_to "一覧を見る",  orders_path, class:'btn btn-primary' %></td>
+    </tr>
+   </table>
+  </div> 
  </div>
 </div>

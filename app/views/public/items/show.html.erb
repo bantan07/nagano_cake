@@ -7,14 +7,14 @@
   </div>
   <div class="col-md-8 offset-md-1">
     <%= form_with model:@cart_item, url: cart_items_path, local:true do |f| %>
-     <%= @item.name %>
-     <%= @item.introduction %>
+     <h3><%= @item.name %></h3>
+     <h3><%= @item.introduction %></h3>
+     <p></p>
      <!--<p>hidden_fieldを使用してitem_idをコントローラに送信する</p>-->
      <%= f.hidden_field :item_id, :value => @item.id %>
-     ¥<%= @item.add_tax_price %>(税込)
-     <%= f.select :amount, "個数選択"  => "個数選択" %>
+     <h3>¥<%= @item.add_tax_price %></h3><p>(税込)</p>
+     <%= f.select :amount, ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], :prompt => "個数選択" %>
      <%= f.submit "カートに入れる", class:'btn btn-success' %>
-
     <% end %>
     </div>
   </div>
