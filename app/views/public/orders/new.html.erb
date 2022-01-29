@@ -3,7 +3,7 @@
 <div class=container>
  <div class=row>
   <div class="px-10 mx-auto">
-    <%= form_with model: @order, url: new_order_path, local:true do |f| %>
+    <%= form_with model: @order, url: orders_confirm_path, local:true do |f| %>
     <div class=form-group>
      <label for="payment_method">支払方法</br>
       <%= f.radio_button :payment_method, "クレジットカード" %> クレジットカード</br>
@@ -17,7 +17,7 @@
         <%= @order.customer.address %>
         <%= @order.customer.last_name + @order.customer.first_name %></br>
       <%= f.radio_button :address_option, 2 %> 登録住所から選択</br>
-      <%= f.select :address, @addresses.all.map { |address|  ["#{address.postal_code}" "#{address.address}" "#{address.name}" , address[:id]]} %>
+      〒<%= f.select :address_id, @addresses.all.map { |address|  ["#{address.postal_code}" "#{address.address}" "#{address.name}" , address[:id]]} %>
      </label>
     </div>
     <div class=form-group>
@@ -35,8 +35,8 @@
       <%= f.text_field :name, :placeholder => "令和道子" %>
      </label>
     </div>
-    <%= link_to "確認画面へ進む",orders_confirm_path, class:'btn btn-primary'  %>
-     <% end %>
+     <%= f.submit "確認画面へ進む", class:'btn btn-primary' %>
+    <% end %>
    </div>
  </div>
 </div>

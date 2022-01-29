@@ -6,7 +6,7 @@
 <div class=container>
  <div class=row>
   <div class="px-3 mx-auto">
-    <%= form_with model:@customer, url: edit_admin_customer_path, local:true,method: :patch do |f| %>
+    <%= form_with model:@customer, url: admin_customer_path(@customer.id), local:true,method: :patch do |f| %>
     <div class=group>
      <label for="id">会員ID
       <%= @customer.id %>

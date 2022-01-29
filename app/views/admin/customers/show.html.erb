@@ -47,9 +47,9 @@
     <div class=group>
      <label for="is_active">会員ステータス
       <%if @customer.is_active %>
-        有効
+        <font color="green">有効</font>
       <% else %>
-        退会
+        <font color="red">退会</font>
       <% end %>
      </label>
     </div>

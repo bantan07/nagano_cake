@@ -37,9 +37,9 @@ Rails.application.routes.draw do
     get "customers/confirm" =>"customers#confirm"
     patch "customers" =>"customers#update"
     patch "customers/withdraw" =>"addresses#withdraw"
+    get "orders/complete" =>"orders#complete"
     resources :orders, only:[:new, :create, :index, :show]
     post "orders/confirm" =>"orders#confirm"
-    get "orders/complete" =>"orders#complete"
     resources :addresses, only:[:index, :edit, :update, :delete]
     post "addresses" =>"addresses#create"
     
