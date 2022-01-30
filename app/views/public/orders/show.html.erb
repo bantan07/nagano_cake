@@ -9,19 +9,19 @@
      <table border="1">
        <tr>
         <th>注文日</th>
-         <td><%= @order.created_at %> </td>
+         <td><%= @order_detali.created_at %> </td>
        </tr>
        <tr>
         <th>配送先</th>
-         <td><%= @order.address %> </td>
+         <td><%= @order_detali.order.address %> </td>
        </tr>
        <tr>
         <th>支払方法</th>
-         <td><%= @order.payment_method %> </td>
+         <td><%= @order_detali.order.payment_method %></td>
        </tr>
        <tr>
         <th>ステータス</th>
-         <td><%= @order.status %> </td>
+         <td><%= @order_detali.order.status %> </td>
        </tr>
      </table>
     </hr>
@@ -32,15 +32,15 @@
        <table border="1">
         <tr>
          <th>商品合計</th>
-          <td><%= @order.price %></td>
+          <!--<td><%#= @order.price %></td>-->
         </tr>
         <tr>
          <th>発送料</th>
-          <td><%= @order.shipping_cost %></td>
+          <td><%= @order_detali.order.shipping_cost %></td>
         </tr>
         <tr>
          <th><h5>ご請求額</h5></th>
-          <td><%= @order.total_payment %></td>
+          <td><%= @order_detali.order.total_payment %></td>
         </tr>
        </table>
       </hr>
@@ -50,22 +50,24 @@
      <hr>
        <table border="1">
         <tr>
-         <th>商品</th>
-          <td><%= @order.item %></td>
+         <thead>
+          <th>商品</th>
+          <th>単価(税込)</th>
+          <th>個数</th>
+          <th>小計</th>
+         </thead>
         </tr>
-        <tr>
-         <th>単価(税込)</th>
-          <td><%= @order.price %></td>
-        </tr>
-        <tr>
-         <th>個数</th>
-          <td><%= @order.amount %></td>
-        </tr>
-        <tr>
-         <th>小計</th>
-          <td><%= @order.total_payment %></td>
-        </tr>
-     <hr>
+         <tbody>
+          <% @order_detalis.each do |order_detail| %>
+           <tr>
+            <td><%= order_detail.item.name %></td>
+            <td> <%= order_detail.item.price %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%#= order.total_payment %></td>
+          </tr>
+          <% end %>
+         </tbody>
+       <hr>
   </div>
  </div>
 </div>

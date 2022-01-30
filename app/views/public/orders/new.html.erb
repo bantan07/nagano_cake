@@ -5,10 +5,12 @@
   <div class="px-10 mx-auto">
     <%= form_with model: @order, url: orders_confirm_path, local:true do |f| %>
     <div class=form-group>
-     <label for="payment_method">支払方法</br>
-      <%= f.radio_button :payment_method, "クレジットカード" %> クレジットカード</br>
-      <%= f.radio_button :payment_method, "銀行振込" %> 銀行振込
-     </label>
+     <h4>支払方法</h4>
+      <%= f.radio_button :payment_method, 'クレジットカード' %>
+      <%= f.label :payment_method, 'クレジットカード' %></br>
+
+      <%= f.radio_button :payment_method, '銀行振込' %>
+      <%= f.label :payment_method, '銀行振込' %>
     </div>
 　　<div class=form-group>
      <label for="address">お届け先</br>
@@ -17,7 +19,7 @@
         <%= @order.customer.address %>
         <%= @order.customer.last_name + @order.customer.first_name %></br>
       <%= f.radio_button :address_option, 2 %> 登録住所から選択</br>
-      〒<%= f.select :address_id, @addresses.all.map { |address|  ["#{address.postal_code}" "#{address.address}" "#{address.name}" , address[:id]]} %>
+      <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
      </label>
     </div>
     <div class=form-group>

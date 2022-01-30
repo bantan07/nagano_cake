@@ -31,12 +31,13 @@ Rails.application.routes.draw do
     get "home/about" =>"homes#about"
     resources :items, only:[:index, :show]
     resources :cart_items, only:[:index, :update, :delete, :create]
-    delete "cart_items" =>"cart_items#destroy_all"
+    delete "cart_items/:id" =>"cart_items#destroy"
+    delete "cart_items" =>"cart_items#destroy_all",as:"destroy_all"
     get "customers/edit" =>"customers#edit"
     get "customers" =>"customers#show"
     get "customers/confirm" =>"customers#confirm"
     patch "customers" =>"customers#update"
-    patch "customers/withdraw" =>"addresses#withdraw"
+    patch "customers/withdraw" =>"addresses#withdraw",as:"withdraw"
     get "orders/complete" =>"orders#complete"
     resources :orders, only:[:new, :create, :index, :show]
     post "orders/confirm" =>"orders#confirm"

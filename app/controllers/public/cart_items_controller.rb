@@ -4,7 +4,7 @@ class Public::CartItemsController < ApplicationController
    @cart_item = CartItem.new
    @cart_items = CartItem.all
    @item = Item.all
-#   @order = Order.new
+   @order = Order.new
   end
   
   def create
@@ -35,9 +35,13 @@ class Public::CartItemsController < ApplicationController
    redirect_to cart_items_path
   end
   
+  def destroy
+   @cart_item = CartItem.find(params[:id]).destroy
+    redirect_to cart_items_path
+  end
   private
    
   def cart_item_params
-   params.require(:cart_item).permit(:item_id, :customer_id, :amount, :name, :image)
+   params.require(:cart_item).permit(:item_id, :customer_id, :amount, :name, :image, :shoppind)
   end
 end

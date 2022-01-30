@@ -14,7 +14,7 @@ class Public::OrdersController < ApplicationController
   
   def confirm
    @cart_items = current_customer.cart_items
-   @order = current_customer.orders.new
+   @order = current_customer.orders.new(order_params)
    @address = Address.find(params[:order][:address_id])
    if params[:order][:address_option] == "1"
       @order.postal_code = current_customer.postal_code
@@ -29,20 +29,36 @@ class Public::OrdersController < ApplicationController
   end
   
   def show
-   @order = Order.find(params[:id])
+   @order_detali = OrderDetali.find(params[:id])
+   @order_detalis = OrderDetali.all
   end
   
   def complete
+   
   end
   
   def create
-  @order_params = Order.new(order_params)
+  @order = Order.new(order_params)
   @order.customer_id = current_customer.id
+  @order.status = 0
     if @order.save
      flash[:notice] = "successfully"
+     current_customer.cart_items.each do |cart_item|
+      order_detail = OrderDetali.new
+      order_detail.order_id = @order.id
+      order_detail.item_id = cart_item.item.id
+      order_detail.price = cart_item.item.price
+      order_detail.amount = cart_item.amount
+      order_detail.making_status = 0
+      if order_detail.save
+      else
+       render :confirm
+      end
+    end
      redirect_to orders_complete_path
     else
      flash[:notice] = "error"
+     @cart_items = current_customer.cart_items
      @orders = Order.all
      render :confirm
     end
@@ -51,7 +67,7 @@ class Public::OrdersController < ApplicationController
    private
    
   def order_params
-   params.require(:order).permit(:customer_id, :postal_code,  :address, 
+   params.require(:order).permit(:customer_id, :item_id,:postal_code,  :address, 
    :shipping_cost, :total_payment, :name, :payment_method, :status)
   end
 end
