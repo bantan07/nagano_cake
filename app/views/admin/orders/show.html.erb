@@ -7,7 +7,7 @@
    <table class="table">
     <tr>
      <th>購入者</th>
-      <td><%= @order.customer.last_name + @order.customer.first_name  %></td>
+      <td><%= @order.name %></td>
     </tr>
     <tr>
      <th>注文日</th>
@@ -23,8 +23,8 @@
   　 </tr>
   　 <tr>
        <th>注文ステータス</th>
-       <%= form_with model:@order, url:admin_order_path(order), local:true do |f| %>
-        <td><%= select :prefecture, options_for_select(Order.prefectures),  class: "prefecture-select" %></td>
+       <%= form_with model:@order, url: admin_order_path, local:true do |f| %>
+        <td><%= select :status, options_for_select(Order. statuses),  class: "status-select" %></td>
         <!--<td><%#= f.collection_select :payment_method, @.users.all, :id, :name %></td>-->
         <!--<td><%#= f.select :amount, ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] %>-->
         <%= f.submit "更新" , class:'btn btn- btn-success' %>
@@ -42,12 +42,12 @@
     </thead>
     <tbody>
      <tr>
-      <td><%= @Order.item.name %></td>
-      <td><%= @Order.item.price %></td>
-      <td><%= @Order.item. %></td>
+      <td><%= @item.name %></td>
+      <td><%= @item.price %></td>
+      <td><%#= @Order.item. %></td>
       <td>
-       <%= form_with model: @order, url:admin_order_path(order), local:true do |f| %>
-        <%= select :making_status, options_for_select(Order.prefectures),  class: "prefecture-select" %>
+       <%= form_with model: @order, url: admin_order_path, local:true do |f| %>
+        <%= select :making_status, options_for_select(Order. making_status),  class: "making_status-select" %>
         <!--<%#= f.select @order.making_status, Order.statuses.keys, class: "status" %>-->
       <%= f.submit "更新" , class:'btn btn- btn-success' %>
       <% end %>
@@ -58,15 +58,15 @@
    <table class="table">
     <tr>
      <th>商品合計</th>
-     <td><%= @Order.price %></td>
+     <td><%= @order.price %></td>
     </tr>
     <tr>
      <th>送料</th>
-     <td><%= @Order.shipping_cost %></td>
+     <td><%= @order.shipping_cost %></td>
     </tr>
     <tr>
      <th>請求金額合計</th>
-     <td><%= @Order.total_payment %></td>
+     <td><%= @order.total_payment %></td>
     </tr>
    </table>
   </div>

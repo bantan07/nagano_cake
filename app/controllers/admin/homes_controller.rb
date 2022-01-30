@@ -1,8 +1,7 @@
 class Admin::HomesController < ApplicationController
   
   def top
-   @order = Order.new
-   @orders = Order.all
-   @customer = Customer.all
+   @orderdetali = OrderDetali.new
+   @order_detalis = OrderDetali.all
   end
 end
