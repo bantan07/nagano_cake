@@ -2,8 +2,11 @@ class Admin::OrdersController < ApplicationController
   
   def show
    @order = Order.find(params[:id])
-   @item = Item.find(params[:id])
-   # @customer = Customer.find(params[:id])
+   @order_detalis = @order.order_detalis
+   @total=0
+   @order_detalis.each do |order_detail|
+   @total += order_detail.item.price*order_detail.amount 
+   end 
   end
   
   def update
@@ -19,7 +22,7 @@ class Admin::OrdersController < ApplicationController
   private
    
   def order_params
-   params.require(:order).permit(:name, :created_at, :address, :payment_method, :is_active, :price, :amount)
+   params.require(:order).permit(:name, :created_at, :address, :payment_method, :status, :price, :amount)
   end
    
 end

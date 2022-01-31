@@ -1,19 +1,5 @@
 Rails.application.routes.draw do
   devise_for :customers
-  # devise_for :admin
-  # devise_scope :customer do
-  #   get "customers/sign_in" =>"devise/sessions#new"
-  #   post "customers/sign_in" =>"devise/sessions#create"
-  #   delete "customers/sign_out" =>"devise/sessions#destroy"
-  #   get "customers/sign_up" =>"devise/registrations#new"
-  #   post "customers/sign_up" =>"devise/registrations#create"
-  # end  
-  # devise_for :admins, skip: :all
-  # devise_scope :admin do
-  #   get "admin/sign_in" =>"admin/sessions#new"
-  #   post "admin/sign_in" =>"admin/sessions#create"
-  #   delete "admin/sign_out" =>"admin/sessions#destroy"
-  # end
   devise_for :admins, path: 'admin', skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
@@ -33,18 +19,16 @@ Rails.application.routes.draw do
     resources :cart_items, only:[:index, :update, :delete, :create]
     delete "cart_items/:id" =>"cart_items#destroy"
     delete "cart_items" =>"cart_items#destroy_all",as:"destroy_all"
-    get "customers/edit" =>"customers#edit"
     get "customers" =>"customers#show"
+    get "customers/edit" =>"customers#edit"
     get "customers/confirm" =>"customers#confirm"
     patch "customers" =>"customers#update"
-    patch "customers/withdraw" =>"addresses#withdraw",as:"withdraw"
+    patch "customers/withdraw" =>"customers#withdraw",as:"withdraw"
     get "orders/complete" =>"orders#complete"
     resources :orders, only:[:new, :create, :index, :show]
     post "orders/confirm" =>"orders#confirm"
     resources :addresses, only:[:index, :edit, :update, :delete]
     post "addresses" =>"addresses#create"
-    
-    
   end
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

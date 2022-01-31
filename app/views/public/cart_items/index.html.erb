@@ -1,10 +1,10 @@
 <p id="notice"></p>
 <div class="container">
  <div class="row">
-  <div class="px-5 mx-auto">
+  <div class="px-10 mx-auto">
     <h4>ショッピングカート</h4>
     <%= link_to "カートを空にする", destroy_all_path, method: :delete, class:'btn btn-danger' %>
-    <table border="1">
+    <table border="1" width="1000" height="100">
     <thead>
      <tr>
       <th>商品名</th>
@@ -37,7 +37,7 @@
     <% end %>
     </tbody>
     </table>
-    <table border="1">
+    <table border="1" width="200">
       <tr>
        <th>合計金額</th>
        <td><%= @sum %></td>
