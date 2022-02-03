@@ -44,8 +44,11 @@
     </label>
     
    　 <div class="text-center">
-     <%= f.submit "確認画面へ進む", class:'btn btn-primary' %>
+   　  <% if current_customer.orders != nil %>
+       <%= f.submit "確認画面へ進む", class:'btn btn-primary' %>
+      <% end %>
     <% end %>
+      
      </div>
    </div>
  </div>

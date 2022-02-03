@@ -23,11 +23,14 @@
   　 </tr>
   　 <tr>
        <th>注文ステータス</th>
-       <%= form_with model: @order, url: admin_order_path, local:true do |f| %>
-        <td>
-         <%= select :status,:name,Order.statuses.keys.to_a %>
+       <td>
+       <%= form_with model: @order, url: admin_order_path(@order), local:true do |f| %>
+
+         <%= f.select :status, Order.statuses_i18n.invert %>
+
            <%= f.submit "更新" , class:'btn btn- btn-success' %>
-         <% end %>
+       <% end %>
+         
        </td>
     </tr>
    </table>
@@ -49,17 +52,17 @@
         <td><%= order_detail.amount %></td>
         <td><%= order_detail.item.price*order_detail.amount %></td>
         <td>
-         <%= form_with model: @order_detali, url: admin_order_path, local:true do |f| %>
-           <%= select :making_status,:name,OrderDetali.making_statuses.keys.to_a %>
+         <%= form_with model: order_detail, url: admin_order_path, local:true do |f| %>
+           <%= f.select :maiking_status, OrderDetali.making_statuses_i18n.invert %>
            <%= f.submit "更新" , class:'btn btn- btn-success' %>
-        <% end %>
+         <% end %>
         </td>
       </tr>
      <% end %>
     </tbody>
    </table>
   </div>
-  <div class="col-md-4 offset-md-1">
+  <div class="col-md-3 offset-md-1">
    <table class="table">
     <tr>
      <th>商品合計</th>

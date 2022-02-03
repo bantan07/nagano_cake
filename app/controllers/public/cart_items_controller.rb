@@ -15,6 +15,7 @@ class Public::CartItemsController < ApplicationController
       flash[:notice] = "successfully"
         redirect_to cart_items_path
     else
+      flash[:notice] = "error"
       @cart_items = CartItem.all
       render :index
     end  
@@ -32,8 +33,8 @@ class Public::CartItemsController < ApplicationController
   end
   
   def destroy_all
-   @cart_item = CartItem.destroy_all
-   redirect_to cart_items_path
+  CartItem.destroy_all
+   redirect_to items_path
   end
   
   def destroy

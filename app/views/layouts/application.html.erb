@@ -22,7 +22,7 @@
 
       <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
-        <%# if nil %>
+         ようこそ<%= current_customer.last_name %>さん！
         <li class="nav-item">
           <%= link_to "マイページ", customer_path, class:'btn btn-outline-dark' %>
         </li>
@@ -71,7 +71,7 @@
     </nav>
    </header>
    <main>
-   <%= yield %>
+     <%= yield %>
    </main>
   </body>
 </html>

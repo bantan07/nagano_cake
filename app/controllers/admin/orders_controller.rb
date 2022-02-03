@@ -12,8 +12,8 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
      if @order.update(order_params)
-     flash[:notice] = "successfully" 
-     redirect_to  admin_order_path(order.id)
+     flash[:notice] = "successfully"
+     redirect_to  admin_order_path(@order.id)
      else
       render :show
      end  
@@ -22,7 +22,7 @@ class Admin::OrdersController < ApplicationController
   private
    
   def order_params
-   params.require(:order).permit(:name, :created_at, :address, :payment_method, :status, :price, :amount)
+   params.require(:order).permit(:status)
   end
    
 end
