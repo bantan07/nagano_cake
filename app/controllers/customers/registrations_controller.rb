@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
-class Customres::RegistrationsController < Devise::RegistrationsController
+class Customers::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-
+  def after_sign_up_path_for(resource)
+    items_path(resource)
+  end
   # GET /resource/sign_up
   # def new
   #   super
@@ -60,25 +62,25 @@ class Customres::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   
-   def new
-   @customer = Customer.new
-   end
+  # def new
+  # @customer = Customer.new
+  # end
   
-  def create
-    @customer = Customer.new(customer_params)
-    if @customer.save
-      flash[:notice] = "successfully"
-      redirect_to  items_path(@customer)
-    else
-      @customer = Customer.all
-      render :index
-    end
-  end
+  # def create
+  #   @customer = Customer.new(customer_params)
+  #   if @customer.save
+  #     flash[:notice] = "successfully"
+  #     redirect_to  items_path(@customer)
+  #   else
+  #     @customer = Customer.all
+  #     render :index
+  #   end
+  # end
   
-  private
+  # private
    
-  def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number)
-  end
+  # def customer_params
+  #   params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number)
+  # end
 
 end

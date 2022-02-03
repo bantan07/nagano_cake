@@ -4,7 +4,7 @@
  <div class="row">  
   <div class="col-md-3">
     <h4>商品詳細</h4>
-    <%= attachment_image_tag @item, :image, :fill, 300, 250, fallback: "image.png" %>
+    <%= attachment_image_tag @item, :image, :size =>'400x100', fallback: "image.png" %>
   </div>
   <div class="col-md-8 offset-md-1">
     <div class=group>
@@ -31,12 +31,12 @@
     <div class=group>
      <label for="is_active">販売ステータス
       <td>
-　　    <% if @item.is_active %>
-　　     <font color="green"> 販売中</font>
-　　    <% else %>
-　　     <font color="green">販売停止中</font
-　　    <% end %>
-　　  </td>
+      <% if @item.is_active %>
+       <font color="green"> 販売中</font>
+      <% else %>
+       <font color="green">販売停止中</font>
+      <% end %>
+      </td>
      </label>
     </div>
     <div class=group>

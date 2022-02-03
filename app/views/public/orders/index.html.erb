@@ -1,10 +1,10 @@
 <p id="notice"></p>
-<h4>注文履歴一覧</h4>
+
 <div class=container>
  <div class=row>
-  <div class="px-8 mx-auto">
-    <hr>
-    <table border="1">
+  <h4>注文履歴一覧</h4>
+  <div class="px-10">
+    <table border="1" width="1200" cellpadding="7">
     <thead>
      <tr>
       <th>注文日</th>
@@ -19,7 +19,11 @@
      <% @orders.each do |order| %>
      <tr>
        <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-       <td><%= order.address %></td>
+       <td>
+        〒<%= order.postal_code %></br>
+        <%= order.address %></br>
+        <%= order.name %>
+        </td>
        <td>
          <% order.order_detalis.each do |order_detail| %>
           <%= order_detail.item.name %></br>
@@ -32,7 +36,6 @@
      <% end %>
      </tbody>
    </table>
-   </hr>
   </div>
  </div>
 </div>

@@ -3,20 +3,23 @@
  <div class="row">
   <div class="px-8 mx-auto">
    <div class="box">
-    <div class="inside-box">
       <p>ようこそ、ながのCAKEへ！</br>
       このサイトは、ケーキ販売のECサイトになります。</br>
       会員でない方も商品の閲覧はできますが、</br>
       購入には会員登録が必要になります。</p>
-    </div>
    </div>
-   <h4>新着商品</h4>
+  </div>
+ </div>
+</div>
+<h4>新着商品</h4>
+<div class="items">
+   
    <% @items.first(4).each do |item| %>
-   　<%= attachment_image_tag @item, :image, :fill, 300, 250, fallback: "image.png" %></br>
+   　<%= link_to image_tag("image.png", class: "image"), item_path(item.id) %></br>
   　　<%= item.name %>
   　　¥<%= item.price %>
 　 <% end %>
-  </div> 
- </div>
 </div>
- 　   <%= link_to "全ての商品を見る >", new_customer_session_path %>
+<div class="pagination">
+ <%= link_to "全ての商品を見る >", new_customer_session_path %>
+</div>

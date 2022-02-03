@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :customers
+  devise_for :customers, controllers: {
+    sessions: 'customers/sessions',
+    registrations: 'customers/registrations'
+  }
   devise_for :admins, path: 'admin', skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
@@ -19,11 +22,9 @@ Rails.application.routes.draw do
     resources :cart_items, only:[:index, :update, :delete, :create]
     delete "cart_items/:id" =>"cart_items#destroy"
     delete "cart_items" =>"cart_items#destroy_all",as:"destroy_all"
-    get "customers" =>"customers#show"
-    get "customers/edit" =>"customers#edit"
     get "customers/confirm" =>"customers#confirm"
-    patch "customers" =>"customers#update"
     patch "customers/withdraw" =>"customers#withdraw",as:"withdraw"
+     resource :customer, only:[:show, :edit, :update]
     get "orders/complete" =>"orders#complete"
     resources :orders, only:[:new, :create, :index, :show]
     post "orders/confirm" =>"orders#confirm"

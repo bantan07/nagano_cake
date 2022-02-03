@@ -1,19 +1,19 @@
 <p id="notice"></p>
 <div class="container">  
  <div class="row">  
-  <div class="px-3 mx-auto">
+  <div class="px-3">
    <h4>マイページ</h4>
    <table class="teble">
     <tr>
      <th><h4>登録情報</h4></th>
-     <td><%= link_to "編集する", customers_edit_path, class:'btn btn-success' %></td>
+     <td><%= link_to "編集する", edit_customer_path, class:'btn btn-success' %></td>
     </tr>
    </table>
    <p></p>
-   <table border="1">
+   <table border="1" width="560" cellpadding="10">
     <tr>
-     <th>氏名</th>
-      <td>
+     <th>氏名</th width="30%">
+      <td width="70%">
        <%= @customer.last_name %>
        <%= @customer.first_name %>
      </td>

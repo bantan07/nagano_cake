@@ -1,17 +1,17 @@
 <p id="notice"></p>
-<h4>注文履歴詳細</h4>
+
 <div class="container px-5 px-sm-0">  
  <div class="row"> 
   <div class="col-md-5">
-   <h5>注文情報</h5>
-    <hr>
-     <table border="1"  width="560">
+   <h4>注文履歴詳細</h4>
+   <h6>注文情報</h6>
+     <table border="1"  width="600" height="240">
        <tr>
-        <th>注文日</th>
-         <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        <th width="20%">注文日</th>
+         <td width="80%"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
        </tr>
        <tr>
-        <th>配送先</th>
+        <th height="18%">配送先</th>
          <td>
           〒<%= @order.postal_code %></br>
           <%= @order.address %></br>
@@ -29,13 +29,13 @@
      </table>
     </hr>
   </div>
-  <div class="col-md-4 offset-md-1">
-    <h5>請求金額</h5>
-      <hr>
-       <table border="1" width="200" height="150">
+  <div class="col-md-4 offset-md-2">
+   <div class="left">
+    <h6>請求金額</h6>
+       <table border="1" width="300" height="120">
         <tr>
-         <th>商品合計</th>
-          <td><%= @total %></td>
+         <th width="60%">商品合計</th>
+          <td width="40%"><%= @total %></td>
         </tr>
         <tr>
          <th>発送料</th>
@@ -46,15 +46,14 @@
           <td><%= @order.total_payment %></td>
         </tr>
        </table>
-      </hr>
+   </div>
   </div>
   <div class="col-md-5">
-    <h5>注文内容</h5>
-     <hr>
-       <table border="1" width="700">
+    <h6>注文内容</h6>
+       <table border="1" width="800" height="120">
         <thead>
          <tr>
-          <th width="60%">商品名</th>
+          <th width="60%" height="50">商品名</th>
           <th width="20%">単価(税込)</th>
           <th width="10%">個数</th>
           <th width="10%">小計</th>
@@ -63,14 +62,16 @@
          <tbody>
           <% @order_detalis.each do |order_detail| %>
            <tr>
-            <td><%= order_detail.item.name %></td>
+            <td  height="45">
+             <%= attachment_image_tag order_detail.item, :image, :size =>'60x40', fallback: "image.png" %>
+             <%= order_detail.item.name %>
+            </td>
             <td> <%= order_detail.item.price %></td>
             <td><%= order_detail.amount %></td>
             <td><%= order_detail.item.price*order_detail.amount %></td>
           </tr>
           <% end %>
          </tbody>
-       <hr>
   </div>
  </div>
 </div>

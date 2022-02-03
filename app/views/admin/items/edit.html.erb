@@ -1,9 +1,8 @@
 <p id="notice"></p>
-
-<h4>商品編集</h4>
 <div class=container>
  <div class=row>
   <div class="px-3 mx-auto">
+   <h4>商品編集</h4>
     <%= form_with model:@item, url: admin_item_path, local:true,method: :patch do |f| %>
     <div class=form-group>
      <label for="Image_id">商品画像
@@ -38,8 +37,10 @@
       <%= f.label :is_active, "販売停止中", style: "display: inline-block;" %>
     </label>
    </div>
+   <div class="text-center">
     <%=f.submit "変更を保存", class:'btn btn-success' %>
     <% end %>
+   </div>
   </div>
  </div>
 </div>

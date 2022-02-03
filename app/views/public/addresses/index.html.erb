@@ -1,8 +1,9 @@
 <p id="notice"></p>
-<h4>配送先住所/一覧</h4>
+
 <div class=container>
  <div class=row>
-  <div class="px-8 mx-auto">
+  <div class="px-8">
+   <h4>配送先住所/一覧</h4>
    <%= form_with model: @address, url: addresses_path, local:true do |f| %>
     <div class=form-group>
      <label for="postal_code">郵便番号(ハイフンなし)
@@ -19,10 +20,12 @@
       <%= f.text_field :name, :placeholder => "令和道子" %>
      </label>
     </div>
+     <div class="text-right">
 　    <%=f.submit "新規登録", class:'btn btn-success' %>
       <% end %>
+     </div>
     <hr>
-    <table border="1" width=600>
+    <table border="1" width="700" cellpadding="8">
     <thead>
      <tr>
       <th>郵便番号</th>

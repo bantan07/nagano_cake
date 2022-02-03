@@ -20,11 +20,14 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = current_customer.postal_code
       @order.name = current_customer.last_name + current_customer.first_name
       @order.address = current_customer.address
-   else
-      params[:order][:address_option] == "2"
+   elsif params[:order][:address_option] == "2"
       @order.postal_code = @address.postal_code
       @order.name = @address.name 
       @order.address = @address.address
+   else 
+      @order.postal_code = params[:order][:postal_code]
+      @order.name = params[:order][:name]
+      @order.address = params[:order][:address]
    end
   end
   
@@ -38,7 +41,6 @@ class Public::OrdersController < ApplicationController
   end
   
   def complete
-   
   end
   
   def create

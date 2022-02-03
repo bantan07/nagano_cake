@@ -23,9 +23,9 @@ class Public::AddressesController < ApplicationController
  
  def update
    @address = Address.find(params[:id])
-   if @address.update(addressr_params)
+   if @address.update(address_params)
       flash[:notice] = "successfully" 
-      redirect_to address_path(@address.id)
+      redirect_to addresses_path
    else
       flash[:notice] = "error" 
       render :edit

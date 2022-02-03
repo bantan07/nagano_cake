@@ -1,11 +1,10 @@
 <p id="notice"></p>
-<h4>会員情報編集</h4>
 <div class=container>
+ <h4>会員情報編集</h4>
  <div class=row>
-  <div class="px-3 mx-auto">
+  <div class="px-10 mx-auto">
     <%= form_with model: @customer, url: customer_path, local:true, method: :patch do |f| %>
-    
-    <div class="form-group">
+     <div class="form-group">
      <label for="name">氏名
      <%=f.text_field :last_name %>
      <%=f.text_field :first_name %>
@@ -37,11 +36,14 @@
       <%= f.text_field :email %>
      </label>
     </div>
-   
-    <%= f.submit "変更を保存", class:'btn btn-success' %>
+    <div class="btn-toolbar">
+     <div class="btn-group">
+    <%= f.submit "編集内容を保存", class:'btn btn-success' %>
    <% end %>
-   <%= link_to "退会する", customers_confirm_path, class:'btn btn-danger' %>
-   
+     </div>
+     <div class="btn-group ml-auto">
+     <%= link_to "退会する", customers_confirm_path, class:'btn btn-danger' %>
+    </div>
   </div>
  </div>
 </div>

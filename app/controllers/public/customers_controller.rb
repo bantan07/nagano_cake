@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+    
   before_action :authenticate_customer!
   
  def show
@@ -8,17 +9,18 @@ class Public::CustomersController < ApplicationController
  def edit
   @customer = current_customer
  end
- 
+  
  def update
-   @customer = current_customer
-   if @customer.update(customer_params)
-      flash[:notice] = "successfully" 
-      redirect_to customers_path
-   else
-      flash[:notice] = "error" 
-      render :edit
-   end
+  @customer = current_customer
+    if @customer.update(customer_params)
+    flash[:notice] = "You have updated user successfully."
+    redirect_to customer_path
+    else
+    flash[:notice] = "error" 
+     render :edit
+    end
  end
+ 
  
  def confirm
   @customer = current_customer

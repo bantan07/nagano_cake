@@ -1,44 +1,52 @@
 <p id="notice"></p>
-<h4>注文情報入力</h4>
+
 <div class=container>
  <div class=row>
-  <div class="px-10 mx-auto">
+  <div class="px-10">
+   <h4>注文情報入力</h4>
     <%= form_with model: @order, url: orders_confirm_path, local:true do |f| %>
     <div class=form-group>
-     <h4>支払方法</h4>
+     <h5>支払方法</h5>
       <%= f.radio_button :payment_method, 'クレジットカード' %>
       <%= f.label :payment_method, 'クレジットカード' %></br>
 
       <%= f.radio_button :payment_method, '銀行振込' %>
       <%= f.label :payment_method, '銀行振込' %>
     </div>
+    <h5>お届け先</h5>
 　　<div class=form-group>
-     <label for="address">お届け先</br>
       <%= f.radio_button :address_option, 1 %> ご自身の住所</br>
-      〒<%= @order.customer.postal_code %>
-        <%= @order.customer.address %>
-        <%= @order.customer.last_name + @order.customer.first_name %></br>
+      〒<%= @order.customer.postal_code %></br>
+        <%= @order.customer.address %></br>
+        <%= @order.customer.last_name + @order.customer.first_name %>
+    </div>
+    <div class=form-group>
       <%= f.radio_button :address_option, 2 %> 登録住所から選択</br>
       <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
-     </label>
     </div>
-    <div class=form-group>
-     <label for="postal_code">郵便番号(ハイフンなし)
-      <%= f.text_field :postal_code, :placeholder => "0000000" %>
-     </label>
-    </div>
-    <div class=form-group>
-     <label for="address">住所
-      <%= f.text_field :address, :size=>"60", :placeholder => "東京都渋谷区代々木神園町0-0" %>
-     </label>
-    </div>
-    <div class=form-group>
-     <label for="name">宛名
-      <%= f.text_field :name, :placeholder => "令和道子" %>
-     </label>
-    </div>
+    <label>
+     <%= f.radio_button :address, "新しいお届け先" %>新しいお届け先
+      <div class=form-group>
+       <label for="postal_code">郵便番号(ハイフンなし)
+        <%= f.text_field :postal_code, :placeholder => "0000000" %>
+       </label>
+      </div>
+      <div class=form-group>
+       <label for="address">住所
+        <%= f.text_field :address, :size=>"60", :placeholder => "東京都渋谷区代々木神園町0-0" %>
+       </label>
+      </div>
+      <div class=form-group>
+       <label for="name">宛名
+        <%= f.text_field :name, :placeholder => "令和道子" %>
+       </label>
+      </div>
+    </label>
+    
+   　 <div class="text-center">
      <%= f.submit "確認画面へ進む", class:'btn btn-primary' %>
     <% end %>
+     </div>
    </div>
  </div>
 </div>
