@@ -2,7 +2,7 @@ class Admin::HomesController < ApplicationController
   before_action :authenticate_admin!
   
   def top
-   @orderdetali = OrderDetali.new
-   @order_detalis = OrderDetali.all
+   @order = Order.new
+   @orders = Order.all
   end
 end

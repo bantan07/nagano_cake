@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
- 
+ before_action :authenticate_customer!
   def new
    @order = Order.new
    @address = Address.new
@@ -10,6 +10,7 @@ class Public::OrdersController < ApplicationController
   def index
    @order = Order.new
    @orders = Order.all
+   @orders = current_customer.orders
   end
   
   def confirm

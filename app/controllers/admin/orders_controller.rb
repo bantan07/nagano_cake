@@ -16,13 +16,13 @@ class Admin::OrdersController < ApplicationController
      redirect_to  admin_order_path(@order.id)
      else
       render :show
-     end  
+     end 
   end
   
   private
    
   def order_params
-   params.require(:order).permit(:status)
+   params.require(:order).permit(:status, :making_status)
   end
    
 end

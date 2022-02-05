@@ -1,17 +1,17 @@
 class Admin::OrderDetailsController < ApplicationController
 
  def update
-  @order_detail = OrderDetail.find(params[:id])
-     if @order_detail_params.update(order_detail_params_params)
+  @order_detali = OrderDetali.find(params[:id])
+     if @order_detali.update(order_detail_params)
      flash[:notice] = "successfully"
-     redirect_to  admin_order_path(@order_detail.id)
+     redirect_to  request.referer
      else
       render :show
      end  
  end
 
  def order_detail_params
-   params.require(:order_detail).permit(:makeing_status)
+   params.require(:order_detali).permit(:making_status)
  end
    
 end

@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class Customers::RegistrationsController < Devise::RegistrationsController
+  
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   def after_sign_up_path_for(resource)
-    items_path(resource)
+    items_path
   end
   # GET /resource/sign_up
   # def new
@@ -77,10 +78,10 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   #   end
   # end
   
-  # private
+  private
    
-  # def customer_params
-  #   params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number)
-  # end
+  def customer_params
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number)
+  end
 
 end

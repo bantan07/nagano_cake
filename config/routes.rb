@@ -28,8 +28,9 @@ Rails.application.routes.draw do
     get "orders/complete" =>"orders#complete"
     resources :orders, only:[:new, :create, :index, :show]
     post "orders/confirm" =>"orders#confirm"
-    resources :addresses, only:[:index, :edit, :update, :delete]
+    resources :addresses, only:[:index, :edit, :update]
     post "addresses" =>"addresses#create"
+    delete "addresses/:id" =>"addresses#destroy"
   end
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

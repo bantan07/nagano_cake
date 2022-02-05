@@ -1,8 +1,9 @@
 class Public::AddressesController < ApplicationController
-  
+  before_action :authenticate_customer!
  def index
   @address = Address.new
   @addresses = Address.all
+  @addresses = current_customer.addresses
  end
  def create
   @address = Address.new(address_params)
@@ -31,8 +32,12 @@ class Public::AddressesController < ApplicationController
       render :edit
    end
  end
+
+ def destroy
+    @address = Address.find(params[:id]).destroy
+    redirect_to addresses_path
+ end
  
-  
  private
    
    def address_params

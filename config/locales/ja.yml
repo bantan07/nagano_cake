@@ -7,10 +7,11 @@ ja:
         now_making: 製作中
         prepare_shipment: 発送準備中
         done_shipment: 発送済み
-    order_detail: 
-      maiking_status:
-        not_stated: 着手不可
-        waiting_for_production: 製作待ち 
-        in_production: 製作中 
-        completion_of_production: 製作完了
+        
+    order_detali: 
+      making_status:
+        not_stated: "着手不可"
+        waiting_for_production: "製作待ち"
+        in_production: "製作中" 
+        completion_of_production: "製作完了"
   
