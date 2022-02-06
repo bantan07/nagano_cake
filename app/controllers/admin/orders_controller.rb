@@ -12,7 +12,13 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
      if @order.update(order_params)
-     flash[:notice] = "successfully"
+      if @order.status == "confirm_payment"
+       p @order.order_detalis
+       
+       p "ty"
+       
+         @order.order_detalis.update_all(making_status: "waiting_for_production")
+      end
      redirect_to  admin_order_path(@order.id)
      else
       render :show
@@ -22,7 +28,7 @@ class Admin::OrdersController < ApplicationController
   private
    
   def order_params
-   params.require(:order).permit(:status, :making_status)
+   params.require(:order).permit(:status)
   end
    
 end
