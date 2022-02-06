@@ -27,7 +27,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
        flash[:notice] = "successfully"
-       redirect_to  admin_items_path(@item)
+       redirect_to  admin_item_path(@item.id)
     else
       @items = Item.all
       render :index
