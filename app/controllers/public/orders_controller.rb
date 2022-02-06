@@ -49,7 +49,7 @@ class Public::OrdersController < ApplicationController
   @order.customer_id = current_customer.id
   @order.status = 0
     if @order.save
-     flash[:notice] = "successfully"
+       @cart_items = current_customer.cart_items.all
      current_customer.cart_items.each do |cart_item|
       order_detail = OrderDetali.new
       order_detail.order_id = @order.id
@@ -58,6 +58,7 @@ class Public::OrdersController < ApplicationController
       order_detail.amount = cart_item.amount
       order_detail.making_status = 0
       if order_detail.save
+       current_customer.cart_items.destroy_all
       else
        render :confirm
       end
